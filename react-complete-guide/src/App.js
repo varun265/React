@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 import './Person/Person.css'
-import Radium, {StyleRoot} from  'radium'
+
 //import Person2 from './Person/Person2'
 
 class App extends Component {
@@ -59,11 +59,8 @@ toggleBtnHandler = () =>{
     const style = {
       backgroundColor:'green',
       textColor:'White',
-      font:'inherit',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
+      font:'inherit'
+
     };
 
 
@@ -84,15 +81,12 @@ toggleBtnHandler = () =>{
     </div>)
 
     style.backgroundColor = 'red';
-    style[':hover'] = {
-      backgroundColor :'salmon',
-      color: 'white'
-    }
+
   }
 
     return (
-      <StyleRoot>
-      <div className="App">
+
+      <div className={classes.App}>
         <h1> Welcome</h1>
 
         <button onClick={this.switchHandler.bind(this,"hakumatata")} > Switch text </button>
@@ -101,10 +95,10 @@ toggleBtnHandler = () =>{
         {persons}
 
       </div>
-    </StyleRoot>
+
     );
   //  return React.createElement('div',{className: 'App'}, React.createElement('h1',null,'Hi my name is varun'))
   }
 }
 
-export default Radium(App);
+export default App;
