@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person'
 import './Person/Person.css'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 //import Person2 from './Person/Person2'
 
@@ -71,11 +72,13 @@ toggleBtnHandler = () =>{
     persons = (
       <div>
       {this.state.persons.map((person,index) => {
-        return <Person click = {()=>this.deleteHandler(index)}
+        return <ErrorBoundary key= {person.id}>
+          <Person click = {()=>this.deleteHandler(index)}
           name= {person.name}
           age= {person.age}
-          key= {person.id}
+          
           changed = {(event)=>this.nameChangeHadler(event,person.id)}/>
+          </ErrorBoundary>
       })
     }
     </div>)

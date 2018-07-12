@@ -1,9 +1,14 @@
 import React from 'react'
-import Radium from  'radium'
+
 import classes from './Person.css';
 
 const person = (props) => {
 
+	const radn = Math.random();
+	if(radn < 0.7)
+	{
+		throw new Error("Something is wrong.")
+	}
   return(<div className = {classes.Person} >
 
 
