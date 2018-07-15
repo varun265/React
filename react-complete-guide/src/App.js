@@ -56,16 +56,8 @@ toggleBtnHandler = () =>{
 
 
   render() {
-    const style = {
-      backgroundColor:'green',
-      textColor:'White',
-      font:'inherit'
-
-    };
-
-
   let persons = null
-
+  let btnClass = '';
   if(this.state.showPersons)
   {
     persons = (
@@ -77,11 +69,11 @@ toggleBtnHandler = () =>{
           key= {person.id}
           changed = {(event)=>this.nameChangeHadler(event,person.id)}/>
       })
+
     }
+
     </div>)
-
-    style.backgroundColor = 'red';
-
+      btnClass = classes.Red
   }
 
     return (
@@ -91,7 +83,7 @@ toggleBtnHandler = () =>{
 
         <button onClick={this.switchHandler.bind(this,"hakumatata")} > Switch text </button>
 
-        <button  style = {style} onClick={this.toggleBtnHandler}>Show/Hide Data</button>
+        <button className = {btnClass} onClick={this.toggleBtnHandler}>Show/Hide Data</button>
         {persons}
 
       </div>
