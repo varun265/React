@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from './Person/Person'
-import './Person/Person.css'
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import Person from '../components/Persons/Person/Person'
+import '../components/Persons/Person/Person.css'
+import Cockpit from '../components/Cockpit/Cockpit'
+
+
+import Persons from '../components/Persons/Persons'
+//import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 //import Person2 from './Person/Person2'
 
@@ -58,35 +62,26 @@ toggleBtnHandler = () =>{
 
   render() {
   let persons = null
-  let btnClass = '';
+
   if(this.state.showPersons)
   {
     persons = (
       <div>
-      {this.state.persons.map((person,index) => {
-        return <ErrorBoundary key= {person.id}>
-          <Person click = {()=>this.deleteHandler(index)}
-          name= {person.name}
-          age= {person.age}
-          
-          changed = {(event)=>this.nameChangeHadler(event,person.id)}/>
-          </ErrorBoundary>
-      })
+        <Persons
+          persons = {this.state.persons}
+          clicked = {this.deleteHandler}
+          change = {this.nameChangeHadler}
+          />
+      </div>)
 
-    }
-
-    </div>)
-      btnClass = classes.Red
   }
 
     return (
 
       <div className={classes.App}>
-        <h1> Welcome</h1>
-
-        <button onClick={this.switchHandler.bind(this,"hakumatata")} > Switch text </button>
-
-        <button className = {btnClass} onClick={this.toggleBtnHandler}>Show/Hide Data</button>
+        <Cockpit showPersons = {this.state.showPersons}
+          clicked = {this.toggleBtnHandler}
+        />
         {persons}
 
       </div>
