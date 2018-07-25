@@ -1,18 +1,20 @@
 import React from 'react'
 import classes from './Cockpit.css'
+import Aux from '../../hoc/Aux'
 const Cockpit = (props) => {
-  let btnClass = '';
+  let btnClass = classes.Button
   if(props.showPersons)
   {
-    btnClass = classes.Red
+    btnClass = [classes.Button, classes.Red].join(' ');
   }
 
   return (
-    <div className = {classes.Cockpit}>
+    <Aux >
     <h1> Welcome</h1>
     <button className = {btnClass}
       onClick={props.clicked}>Show/Hide Data</button>
-  </div>
+    <button onClick={props.isLogin}> Login</button>
+  </Aux>
   );
 }
 
